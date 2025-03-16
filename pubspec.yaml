@@ -14,6 +14,7 @@ dependencies:
     sdk: flutter
     
   avatar_glow:
+  pdfx:
   google_fonts:
   animated_text_kit:
   font_awesome_flutter:
@@ -33,6 +34,7 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - assets/documents/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

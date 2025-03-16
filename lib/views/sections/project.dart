@@ -48,14 +48,11 @@ class ProjectView extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
+              Image.asset(
+                "assets/images/logoariah.png",
+                height: MediaQuery.of(context).size.height/6,
+                width : MediaQuery.of(context).size.width/6,
 
-                child: Image.asset(
-                  "assets/images/logoariah.png",
-                  height: MediaQuery.of(context).size.height/6,
-                  width : MediaQuery.of(context).size.width/6,
-
-                ),
               ),
               SizedBox(
                 width: MediaQuery.of(context).size.width/1.5,

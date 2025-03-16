@@ -2,6 +2,9 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pdfx/pdfx.dart';
+import 'package:portfolio_mobile/services/download_file.dart';
+import 'package:portfolio_mobile/views/sections/my_cv_file.dart';
 
 class AboutMeView extends StatelessWidget {
   const AboutMeView({super.key});
@@ -43,7 +46,12 @@ class AboutMeView extends StatelessWidget {
     final downloadCvBtn = SizedBox(
       width: MediaQuery.of(context).size.width,
       child: ElevatedButton.icon(
-          onPressed: () {},
+          onPressed: (){
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const MyCvFile()),
+            );
+          },
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.black
           ),
@@ -51,6 +59,10 @@ class AboutMeView extends StatelessWidget {
               color: Colors.white, fontSize: 17, fontWeight: FontWeight.bold
           ),)
       ),
+    );
+
+    final pdfController = PdfController(
+      document: PdfDocument.openAsset('assets/documents/portfolioCv.pdf'),
     );
 
     return Scaffold(
