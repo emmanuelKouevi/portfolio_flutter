@@ -15,6 +15,7 @@ dependencies:
     
   avatar_glow:
   pdfx:
+  url_launcher:
   google_fonts:
   animated_text_kit:
   font_awesome_flutter:
