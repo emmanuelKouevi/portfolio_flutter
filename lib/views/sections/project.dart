@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -10,24 +12,27 @@ class ProjectView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final title = Row(
-      children: [
-        IconButton(
-            onPressed: () => Navigator.pop(context),
-            icon: const FaIcon(
-              FontAwesomeIcons.arrowLeft,
-              size: 20,
-            )),
-        const SizedBox(width: 10),
-        Text("MES PROJETS",
-          style: GoogleFonts.ubuntu(
-              fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
-        ),
-      ],
+    final title = Padding(
+      padding: const EdgeInsets.only(top: 10),
+      child: Row(
+        children: [
+          IconButton(
+              onPressed: () => Navigator.pop(context),
+              icon: const FaIcon(
+                FontAwesomeIcons.arrowLeft,
+                size: 20,
+              )),
+          const SizedBox(width: 10),
+          Text("MES PROJETS",
+            style: GoogleFonts.ubuntu(
+                fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
+          ),
+        ],
+      ),
     );
 
     final description = Container(
-      padding: const EdgeInsets.only(left: 10, right: 10),
+      padding: const EdgeInsets.only(left: 10, right: 10, top: 15),
       child: AnimatedTextKit(
         animatedTexts: [
           TypewriterAnimatedText("""Ci dessous se trouve la liste des projets réalisés pendant mes formations , mes stages en entreprise."""
@@ -43,7 +48,11 @@ class ProjectView extends StatelessWidget {
       children: [
         InkWell(
           onTap: () async{
-            await UrlLauncherService().urlLauncher('https://ariahapp.com/');
+            if(Platform.isAndroid){
+              await UrlLauncherService().urlLauncher('https://play.google.com/store/apps/details?id=com.sectester.ariah.app.ariah');
+            }else{
+              await UrlLauncherService().urlLauncher('https://apps.apple.com/ci/app/ariah-app/id6449749059');
+            }
           },
           child: Card(
             color: Colors.white,
@@ -72,7 +81,13 @@ class ProjectView extends StatelessWidget {
         ),
 
         InkWell(
-          onTap: () {},
+          onTap: () async{
+            if(Platform.isAndroid){
+              await UrlLauncherService().urlLauncher("https://play.google.com/store/apps/details?id=com.bfedition.sovingab&hl=fr");
+            }else{
+              await UrlLauncherService().urlLauncher("https://apps.apple.com/tr/app/sovingab/id6474798928");
+            }
+          },
           child: Card(
             color: Colors.white,
             elevation: 5,
@@ -85,12 +100,11 @@ class ProjectView extends StatelessWidget {
                     width: MediaQuery.of(context).size.width/7,
                     height: MediaQuery.of(context).size.height/7,
                     padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Colors.red.shade900,
                     ),
                     child: Image.asset(
-                      "assets/images/sovingab.png",color: Colors.white,
+                      "assets/images/sovingab.jpg",
                       height: MediaQuery.of(context).size.height,
                       width : MediaQuery.of(context).size.width,
 
@@ -153,8 +167,8 @@ class ProjectView extends StatelessWidget {
                 children: [
                   description,
                   SizedBox(
-                    height: MediaQuery.of(context).size.height/1,
-                    width: MediaQuery.of(context).size.width/1.1,
+                    height: MediaQuery.of(context).size.height,
+                    width: MediaQuery.of(context).size.width,
                     child: projects,
                   )
                 ],
