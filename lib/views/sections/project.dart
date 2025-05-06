@@ -121,7 +121,7 @@ class ProjectView extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Image.asset(
-                    "assets/images/gbairais.webp",
+                    "assets/images/gbairai.png",
                     height: MediaQuery.of(context).size.height/6,
                     width : MediaQuery.of(context).size.width/6,
 
