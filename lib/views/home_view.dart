@@ -20,8 +20,8 @@ class HomeView extends StatelessWidget {
 
     final jobName = AnimatedTextKit(
       animatedTexts: [
-        TypewriterAnimatedText('DEVELOPPPEUR WEB ET MOBILE', textStyle: GoogleFonts.ubuntu(
-          fontSize: 20, color: Colors.white.withOpacity(0.9), fontWeight: FontWeight.bold
+        TypewriterAnimatedText('DEVELOPPPEUR MOBILE FLUTTER', textStyle: GoogleFonts.ubuntu(
+          fontSize: 17, color: Colors.white.withOpacity(0.9), fontWeight: FontWeight.bold
         ), speed: const Duration(milliseconds: 200)),
       ],
       totalRepeatCount: 2,
@@ -107,7 +107,7 @@ class HomeView extends StatelessWidget {
           ),
 
           GestureDetector(
-            onTap: () => Navigator.pushNamed(context, projectViewRoute),
+            onTap: () => Navigator.pushNamed(context, serviceViewRoute),
             child: Column(
               children: [
                 Image.asset("assets/icons/services.png", height: 60,),
@@ -119,14 +119,17 @@ class HomeView extends StatelessWidget {
             ),
           ),
 
-          Column(
-            children: [
-              Image.asset("assets/icons/projet.png", height: 60,),
-              spacer,
-              Text("Projets", style: GoogleFonts.akshar(
-                  fontWeight: FontWeight.bold, fontSize: 16
-              ),)
-            ],
+          GestureDetector(
+            onTap: () => Navigator.pushNamed(context, projectViewRoute),
+            child: Column(
+              children: [
+                Image.asset("assets/icons/projet.png", height: 60,),
+                spacer,
+                Text("Projets", style: GoogleFonts.akshar(
+                    fontWeight: FontWeight.bold, fontSize: 16
+                ),)
+              ],
+            ),
           ),
 
         ],

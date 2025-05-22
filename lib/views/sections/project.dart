@@ -1,8 +1,6 @@
 import 'dart:io';
-
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_mobile/services/url_launcher_service.dart';
 
@@ -12,23 +10,9 @@ class ProjectView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final title = Padding(
-      padding: const EdgeInsets.only(top: 10),
-      child: Row(
-        children: [
-          IconButton(
-              onPressed: () => Navigator.pop(context),
-              icon: const FaIcon(
-                FontAwesomeIcons.arrowLeft,
-                size: 20,
-              )),
-          const SizedBox(width: 10),
-          Text("MES PROJETS",
-            style: GoogleFonts.ubuntu(
-                fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
-          ),
-        ],
-      ),
+    final title = Text("Mes projets",
+      style: GoogleFonts.montserrat(
+          fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),
     );
 
     final description = Container(
@@ -36,7 +20,7 @@ class ProjectView extends StatelessWidget {
       child: AnimatedTextKit(
         animatedTexts: [
           TypewriterAnimatedText("""Ci dessous se trouve la liste des projets réalisés pendant mes formations , mes stages en entreprise."""
-              , textStyle: GoogleFonts.ubuntu(
+              , textStyle: GoogleFonts.montserrat(
                   fontSize: 16, color: Colors.black.withOpacity(0.9), letterSpacing: 1.3, wordSpacing: 3
               ), speed: const Duration(microseconds: 10000)),
         ],
@@ -70,7 +54,7 @@ class ProjectView extends StatelessWidget {
                   ),
                   SizedBox(
                     width: MediaQuery.of(context).size.width/1.6,
-                    child: Text("""Ariah vous permet de concevoir des CV professionnels en toute simplicité avec des modèles préconçus et personnalisables, pour attirer l’attention des recruteurs.""", style: GoogleFonts.ubuntu(
+                    child: Text("""Ariah vous permet de concevoir des CV professionnels en toute simplicité avec des modèles préconçus et personnalisables, pour attirer l’attention des recruteurs.""", style: GoogleFonts.montserrat(
                       color: Colors.black.withOpacity(0.6)
                     ),),
                   )
@@ -112,7 +96,7 @@ class ProjectView extends StatelessWidget {
                   ),
                   SizedBox(
                     width: MediaQuery.of(context).size.width/1.6,
-                    child: Text("""Sovingab est une plateforme mobile (Gabonaise) permettant aux utilisateurs de pouvoir réserver des boissons (Vins) d'excellente qualité en ligne. """, style: GoogleFonts.ubuntu(
+                    child: Text("""Sovingab est une plateforme mobile (Gabonaise) permettant aux utilisateurs de pouvoir réserver des boissons (Vins) d'excellente qualité en ligne. """, style: GoogleFonts.montserrat(
                         color: Colors.black.withOpacity(0.6)
                     ),),
                   )
@@ -142,7 +126,7 @@ class ProjectView extends StatelessWidget {
                   ),
                   SizedBox(
                     width: MediaQuery.of(context).size.width/1.6,
-                    child: Text("""Gbairais est une application qui célèbre la liberté d'expression anonyme. Plongez dans une communauté unique ou votre voix peut être entendue sans révéler votre identité.""", style: GoogleFonts.ubuntu(
+                    child: Text("""Gbairais est une application qui célèbre la liberté d'expression anonyme. Plongez dans une communauté unique ou votre voix peut être entendue sans révéler votre identité.""", style: GoogleFonts.montserrat(
                         color: Colors.black.withOpacity(0.6)
                     ),),
                   )
@@ -156,11 +140,14 @@ class ProjectView extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        title: title,
+      ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.only(top: 70, right: 20, left: 10),
+        padding: const EdgeInsets.only(right: 10, left: 10),
         child: Column(
           children: [
-            title,
             Container(
               padding: const EdgeInsets.only(left: 10, right: 10),
               child: Column(
