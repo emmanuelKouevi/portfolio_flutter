@@ -1,18 +1,28 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_mobile/router.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends StatefulWidget {
   const HomeView({super.key});
 
   @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+  @override
   Widget build(BuildContext context) {
+
+
 
     const spacerWidth = SizedBox(width: 10);
     const spacer = SizedBox(height: 10);
+
+
 
     final name = Text("EMMANUEL KOUEVI", style: GoogleFonts.ubuntu(
         fontWeight: FontWeight.bold, fontSize: 15, color: Colors.white
@@ -20,7 +30,7 @@ class HomeView extends StatelessWidget {
 
     final jobName = AnimatedTextKit(
       animatedTexts: [
-        TypewriterAnimatedText('DEVELOPPPEUR MOBILE FLUTTER', textStyle: GoogleFonts.ubuntu(
+        TypewriterAnimatedText('DEVELOPPEUR MOBILE FLUTTER', textStyle: GoogleFonts.ubuntu(
           fontSize: 17, color: Colors.white.withOpacity(0.9), fontWeight: FontWeight.bold
         ), speed: const Duration(milliseconds: 200)),
       ],
@@ -149,7 +159,35 @@ class HomeView extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton.small(
         backgroundColor: Colors.black,
-        onPressed: () {},
+        onPressed: () async{
+          final Email email = Email(
+            body: '',
+            subject: '',
+            recipients: ['emmanuelhervekouevi@gmail.com'],
+            cc: [''],
+            bcc: [''],
+            //attachmentPaths: [''],
+            isHTML: false,
+          );
+
+          String platformResponse;
+
+          try {
+            await FlutterEmailSender.send(email);
+            platformResponse = 'success';
+          } catch (error) {
+            print(error);
+            platformResponse = error.toString();
+          }
+
+          if (!mounted) return;
+
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(platformResponse),
+            ),
+          );
+        },
         child: const FaIcon(FontAwesomeIcons.solidEnvelope, color: Colors.white,size: 17),
       ),
     );

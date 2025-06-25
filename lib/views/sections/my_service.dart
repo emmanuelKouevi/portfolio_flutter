@@ -107,7 +107,7 @@ class ServiceView extends StatelessWidget {
               ),
               const Divider(endIndent: 1.2,thickness: 0.5,color: Colors.grey,indent: 1.4,),
               ServiceItem(
-                  iconData: FontAwesomeIcons.hotTub,
+                  iconData: FontAwesomeIcons.hotTubPerson,
                   title: "Tests et Qualité",
                   subtitles: testAndQuality
               ),
