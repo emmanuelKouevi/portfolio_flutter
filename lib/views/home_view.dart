@@ -106,14 +106,17 @@ class _HomeViewState extends State<HomeView> {
             ),
           ),
 
-          Column(
-            children: [
-              Image.asset("assets/icons/skills.png", height: 60,),
-              spacer,
-              Text("Compétences", style: GoogleFonts.akshar(
-                fontWeight: FontWeight.bold, fontSize: 16
-              ),)
-            ],
+          GestureDetector(
+            onTap: () => Navigator.pushNamed(context, skillViewRoute),
+            child: Column(
+              children: [
+                Image.asset("assets/icons/skills.png", height: 60,),
+                spacer,
+                Text("Compétences", style: GoogleFonts.akshar(
+                  fontWeight: FontWeight.bold, fontSize: 16
+                ),)
+              ],
+            ),
           ),
 
           GestureDetector(
@@ -174,9 +177,8 @@ class _HomeViewState extends State<HomeView> {
 
           try {
             await FlutterEmailSender.send(email);
-            platformResponse = 'success';
+            platformResponse = 'Fermeture de votre couriel';
           } catch (error) {
-            print(error);
             platformResponse = error.toString();
           }
 
